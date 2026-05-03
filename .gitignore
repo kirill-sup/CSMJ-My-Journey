@@ -1,0 +1,19 @@
+# ignore executable files (compilation results)
+# ingnore all binary files and others 
+hash_map
+vector
+makefile
+
+# ignore all file, ends with .o (object files) 
+*.o
+*.out
+
+# ignore temporary Vim files (swap-files)
+*.swp
+*~
+.netrwhist
+
+# ignore system and secret files
+.vscode/
+.idea/
+.DS_Store
