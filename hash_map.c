@@ -238,6 +238,25 @@ void hashmap_get(struct HashTable *hashmap, char* name, struct result *res){
 		}
 	}
 
+void hashmap_free(struct HashTable *hashmap){
+
+    for (int i = 0; i < hashmap->capacity; i++){
+
+        if (hashmap->buckets[i] != NULL){
+            
+            struct Entry *temp = hashmap->buckets[i];
+
+            while (temp != NULL){
+                struct Entry *next = temp->next;
+                free(temp);
+                temp = next;
+            }
+        }
+    }
+    
+    free(hashmap->buckets);
+    }
+
 int main()
 {
     struct HashTable hashmap;
@@ -250,5 +269,8 @@ int main()
     hashmap_get(&hashmap, "bannan", &res);
 
     printf("this is a bannan: %d\n", res.data.i);
+    
+    hashmap_free(&hashmap);
+    
     return 0;
 }
